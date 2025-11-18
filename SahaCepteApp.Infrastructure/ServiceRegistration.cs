@@ -1,7 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using SahaCepte.Infrastructure.Persistence;
 using SahaCepte.Infrastructure.Persistence.Repositories;
-using SahaCepteApp.Application.Interfaces;
 using SahaCepteApp.Application.Interfaces.Persistence;
 using SahaCepteApp.Application.Interfaces.Persistence.Repositories;
 

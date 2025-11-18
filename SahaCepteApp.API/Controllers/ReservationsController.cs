@@ -1,9 +1,6 @@
-using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SahaCepteApp.Application.Interfaces.Services;
-using SahaCepteApp.Domain.Dtos.Facility;
-using SahaCepteApp.Domain.Wrappers;
 
 namespace SahaCepteApp.API.Controllers;
 

@@ -6,9 +6,8 @@ public static class UserExtensions
 {
     public static Guid GetUserId(this ClaimsPrincipal principal)
     {
-        if (string.IsNullOrWhiteSpace(principal.FindFirst("id")?.Value))
-            return Guid.Empty;
-
-        return new Guid(principal.FindFirst("id")?.Value!);
+        return string.IsNullOrWhiteSpace(principal.FindFirst("id")?.Value) 
+            ? Guid.Empty 
+            : new Guid(principal.FindFirst("id")?.Value!);
     }
 }

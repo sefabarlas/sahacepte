@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using SahaCepteApp.API.Extensions;
 using SahaCepteApp.Application.Interfaces.Persistence;
 using SahaCepteApp.Application.Interfaces.Services;
 using SahaCepteApp.Domain.Dtos.Facility;
@@ -13,7 +14,8 @@ public class ReservationService(IUnitOfWork unitOfWork, IHttpContextAccessor htt
 {
     public async Task<ServiceResponse<Guid>> CreateReservationAsync(CreateReservationDto dto)
     {
-        // var userId = httpContext.HttpContext.User.GetUserId();
+        var userId = httpContext.HttpContext.User.GetUserId();
+        
         if (dto.MatchDate.Date < DateTime.UtcNow.Date)
             return ServiceResponse<Guid>.FailureResult("Geçmiş tarihe rezervasyon yapılamaz." );
 
@@ -25,7 +27,7 @@ public class ReservationService(IUnitOfWork unitOfWork, IHttpContextAccessor htt
         {
             Id = Guid.NewGuid(),
             PitchId = dto.PitchId,
-            OrganizerId = dto.UserId,
+            OrganizerId = userId,
             MatchDate = dto.MatchDate.Date,
             StartTime = dto.StartTime,
             EndTime = dto.StartTime.Add(TimeSpan.FromHours(1)),
@@ -33,14 +35,14 @@ public class ReservationService(IUnitOfWork unitOfWork, IHttpContextAccessor htt
             Status = ReservationStatus.Pending,
             Note = dto.Note,
             CreatedAt = DateTime.UtcNow,
-            CreatedBy = dto.UserId,
+            CreatedBy = userId,
             IsActive = true
         };
 
         reservation.Participants.Add(new ReservationParticipant
         {
             Id = Guid.NewGuid(),
-            UserId = dto.UserId,
+            UserId = userId,
             Status = ParticipantStatus.Organizer,
             AmountToPay = pitch.PricePerHour,
             PaymentStatus = PaymentStatus.Unpaid
