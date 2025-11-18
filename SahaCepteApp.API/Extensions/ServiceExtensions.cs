@@ -7,6 +7,8 @@ using SahaCepte.Infrastructure;
 using SahaCepte.Infrastructure.Persistence;
 using SahaCepte.Infrastructure.Persistence.Context;
 using SahaCepteApp.Application;
+using SahaCepteApp.Application.Helpers;
+using SahaCepteApp.Logger;
 
 namespace SahaCepteApp.API.Extensions;
 
@@ -100,5 +102,11 @@ public static class ServiceExtensions
                 }
             });
         });
+    }
+    
+    public static void ConfigureLoggerService(this IServiceCollection services)
+    {
+        services.AddSingleton<ILoggerManager, LoggerManager>();
+        services.AddSingleton<LogHelper>();
     }
 }

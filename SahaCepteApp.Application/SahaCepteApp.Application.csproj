@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\SahaCepteApp.Domain\SahaCepteApp.Domain.csproj" />
+      <ProjectReference Include="..\SahaCepteApp.Logger\SahaCepteApp.Logger.csproj" />
     </ItemGroup>
 
     <ItemGroup>

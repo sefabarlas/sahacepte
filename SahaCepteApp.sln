@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SahaCepteApp.Infrastructure
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SahaCepteApp.API", "SahaCepteApp.API\SahaCepteApp.API.csproj", "{DF5053C3-B3BC-4994-8F38-6189ACBA68AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SahaCepteApp.Logger", "SahaCepteApp.Logger\SahaCepteApp.Logger.csproj", "{94844DF2-E94E-487E-8B68-C3660F60844C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,5 +34,9 @@ Global
 		{DF5053C3-B3BC-4994-8F38-6189ACBA68AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF5053C3-B3BC-4994-8F38-6189ACBA68AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF5053C3-B3BC-4994-8F38-6189ACBA68AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94844DF2-E94E-487E-8B68-C3660F60844C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94844DF2-E94E-487E-8B68-C3660F60844C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94844DF2-E94E-487E-8B68-C3660F60844C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94844DF2-E94E-487E-8B68-C3660F60844C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

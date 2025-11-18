@@ -1,11 +1,15 @@
+using SahaCepteApp.Domain.Enums;
+
 namespace SahaCepteApp.Domain.Wrappers;
 
 public class ServiceResponse<T>
 {
-    public bool Success { get; set; }
+    public ResponseDataTypes ResponseDataType { get; set; }
     public string Message { get; set; }
     public T Data { get; set; }
     public List<string> Errors { get; set; }
+    public DateTime ServerTime { get; set; }
+    public int? TotalRowCount { get; set; }
 
     public ServiceResponse()
     {
@@ -13,26 +17,32 @@ public class ServiceResponse<T>
 
     public ServiceResponse(T data, string message = null)
     {
-        Success = true;
+        ResponseDataType = ResponseDataTypes.Success;
         Message = message ?? "İşlem başarılı.";
         Data = data;
         Errors = null;
+        ServerTime = DateTime.UtcNow;
+        TotalRowCount = null;
     }
 
-    public ServiceResponse(string message)
+    public ServiceResponse(string message, ResponseDataTypes responseDataType)
     {
-        Success = false;
+        ResponseDataType = responseDataType;
         Message = message;
         Data = default;
         Errors = null;
+        ServerTime = DateTime.UtcNow;
+        TotalRowCount = null;
     }
 
     public ServiceResponse(List<string> errors)
     {
-        Success = false;
+        ResponseDataType = ResponseDataTypes.ErrorWithList;
         Message = "Bir veya daha fazla hata oluştu.";
         Data = default;
         Errors = errors;
+        ServerTime = DateTime.UtcNow;
+        TotalRowCount = null;
     }
     
     public static ServiceResponse<T> SuccessResult(T data, string message = "İşlem başarılı.")
@@ -42,7 +52,12 @@ public class ServiceResponse<T>
 
     public static ServiceResponse<T> FailureResult(string message)
     {
-        return new ServiceResponse<T>(message);
+        return new ServiceResponse<T>(message, ResponseDataTypes.Error);
+    }
+    
+    public static ServiceResponse<T> WarningResult(string message)
+    {
+        return new ServiceResponse<T>(message, ResponseDataTypes.Warning);
     }
         
     public static ServiceResponse<T> FailureResult(List<string> errors)

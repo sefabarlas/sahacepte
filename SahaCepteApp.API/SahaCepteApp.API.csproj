@@ -10,6 +10,7 @@
       <ProjectReference Include="..\SahaCepteApp.Application\SahaCepteApp.Application.csproj" />
       <ProjectReference Include="..\SahaCepteApp.Infrastructure\SahaCepteApp.Infrastructure.csproj" />
       <ProjectReference Include="..\SahaCepteApp.Domain\SahaCepteApp.Domain.csproj" />
+      <ProjectReference Include="..\SahaCepteApp.Logger\SahaCepteApp.Logger.csproj" />
     </ItemGroup>
 
     <ItemGroup>

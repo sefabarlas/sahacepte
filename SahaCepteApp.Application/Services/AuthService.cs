@@ -14,7 +14,7 @@ public class AuthService(IUnitOfWork unitOfWork, ITokenService tokenService) : I
 
         if (user == null)
         {
-            return ServiceResponse<AuthResponse>.FailureResult("Kullanıcı bulunamadı. Lütfen kayıt olun.");
+            return ServiceResponse<AuthResponse>.WarningResult("Kullanıcı bulunamadı. Lütfen kayıt olun.");
         }
 
         var token = tokenService.GenerateToken(user);
